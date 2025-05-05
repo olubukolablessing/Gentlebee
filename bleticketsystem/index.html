@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Ticket System</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0265a3, #0095ffd4);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logo {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+      display: flex;
+        text-align: center;
+        justify-content: center;
+      align-items: center;
+    }
+
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
+    }
+
+    .logo h1 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .main-title {
+      font-size: 2.8rem;
+      font-weight: bold;
+      animation: fadeIn 1.2s ease-in;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      margin-top: 0.8rem;
+      color: #e0e0e0;
+      animation: fadeInUp 1.4s ease-in;
+    }
+
+    .enter-btn {
+      margin-top: 2rem;
+      padding: 0.9rem 2rem;
+      background-color: white;
+      color: #003B95;
+      border: 3px solid transparent;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .enter-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      border: 3px solid rgb(14, 99, 227);
+    }
+
+    .footer {
+      position: absolute;
+      bottom: 20px;
+      font-size: 0.85rem;
+      color: #cccccc;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="logo">
+    <img src="/rectem logo.jpg" alt="School Logo" />
+    <h1>RECTEM</h1>
+  </div>
+
+  <div class="main">
+    <h2 class="main-title">Welcome to the Ticket System</h2>
+    <p class="subtitle">Book hostels. Register classes. Get event passes – all in one place.</p>
+    <a href="home.html"><button class="enter-btn">Enter Portal</button></a>
+  </div>
+
+ 
+</body>
+</html>

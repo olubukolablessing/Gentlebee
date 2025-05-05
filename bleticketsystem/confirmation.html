@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Confirmation</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0265a3;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      min-height: 100vh;
+      text-align: center;
+    }
+    .ticket {
+      background: white;
+      color: #0265a3;
+      padding: 2rem;
+      border-radius: 12px;
+      max-width: 400px;
+      width: 100%;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+    }
+    .ticket h2 {
+      margin-bottom: 1rem;
+      color: #0265a3;
+    }
+    .info {
+      text-align: left;
+      margin-bottom: 1.5rem;
+    }
+    .info p {
+      margin: 0.5rem 0;
+    }
+    .print-btn {
+      background: #0265a3;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .print-btn:hover {
+      background: #0265a3;
+    }
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #e0e0e0;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="ticket">
+    <h2>Booking Confirmed!</h2>
+    <div class="info">
+      <p><strong>Name:</strong> Jane Doe</p>
+      <p><strong>Matric No:</strong> 12345678</p>
+      <p><strong>Type:</strong> Event Ticket (Sports Day)</p>
+      <p><strong>Ticket ID:</strong> TCKT-20250504-001</p>
+      <p><strong>Date:</strong> May 4, 2025</p>
+    </div>
+    <button class="print-btn" onclick="window.print()">Print / Screenshot</button>
+    <p class="note">Please screenshot or print this ticket and bring it to the event.</p>
+  </div>
+
+</body>
+</html>

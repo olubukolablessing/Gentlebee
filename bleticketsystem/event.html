@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Event Ticketing</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      background-color: #e8f0ff;
+      color: #0265a3;
+    }
+    header {
+      background-color: #0265a3;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 { font-size: 1.5rem; }
+    .container {
+      max-width: 700px;
+      margin: 2rem auto;
+      background-color: white;
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #0265a3;
+    }
+    form { display: grid; gap: 1rem; }
+    label { font-weight: 600; }
+    input, select {
+      padding: 0.75rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+      width: 100%;
+    }
+    .button {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background-color: #0265a3;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .button:hover { background-color: #0265a3; }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #0265a3;
+      color: white;
+      margin-top: 3rem;
+    }
+    @media (max-width: 600px) {
+      .container { margin: 1rem; padding: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Event Ticketing</h1>
+    <a href="home.html" style="color: white; text-decoration: none;">← Back to Home</a>
+  </header>
+
+  <div class="container">
+    <h2>Get Your Event Ticket</h2>
+    <form id="eventForm">
+      <div>
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" placeholder="Enter your name" required />
+      </div>
+      <div>
+        <label for="matric">Matric Number:</label>
+        <input type="text" id="matric" placeholder="e.g., 12345678" required />
+      </div>
+      <div>
+        <label for="event">Event:</label>
+        <select id="event" required>
+          <option value="">Select Event</option>
+          <option value="Sports Day">Sports Day</option>
+          <option value="Cultural Day">Cultural Day</option>
+          <option value="Music Night">Music Night</option>
+          <option value="Tech Conference">Tech Conference</option>
+        </select>
+      </div>
+      <div>
+        <label for="ticket">Ticket Type:</label>
+        <select id="ticket" required>
+          <option value="">Select Ticket</option>
+          <option value="Free Entry">Free Entry</option>
+          <option value="VIP - ₦1000">VIP - ₦1000</option>
+          <option value="Backstage - ₦2000">Backstage - ₦2000</option>
+        </select>
+      </div>
+      <button type="submit" class="button">Get Ticket</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('eventForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const name   = document.getElementById('name').value;
+      const matric = document.getElementById('matric').value;
+      const event  = document.getElementById('event').value;
+      const type   = document.getElementById('ticket').value;
+      const ticket = {
+        id: 'E' + Date.now(),
+        name,
+        matric,
+        event,
+        type,
+        status: 'Pending',
+        date: new Date().toLocaleDateString('en-GB')
+      };
+      const all = JSON.parse(localStorage.getItem('eventTickets') || '[]');
+      all.push(ticket);
+      localStorage.setItem('eventTickets', JSON.stringify(all));
+      window.location.href = 'confirmation.html?type=event&id=' + ticket.id;
+    });
+  </script>
+
+
+</body>
+</html>
