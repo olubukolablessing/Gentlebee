@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CS Department Login</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<style>
+    body.login-body {
+  font-family: 'Segoe UI', sans-serif;
+  background: linear-gradient(120deg, #0265a3, #00bfff);
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-container {
+  background: #ffffff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.login-container h1 {
+  color: #007bff;
+  margin-bottom: 1.5rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  text-align: left;
+  margin: 0.5rem 0 0.25rem;
+  color: #333;
+}
+
+input, select {
+  padding: 0.7rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  outline: none;
+  transition: border 0.2s;
+}
+
+input:focus, select:focus {
+  border-color: #007bff;
+}
+
+button {
+  padding: 0.8rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #0056cc;
+}
+
+</style>
+<body class="login-body">
+  <div class="login-container">
+    <h1>🎫Login</h1>
+
+    <form id="loginForm">
+      <label for="name">Full Name</label>
+      <select id="name" required>
+        <option value="">-- Select Name --</option>
+        <option value="Jesulolopemi">Jesulolopemi</option>
+        <option value="Tofunmi">Tofunmi</option>
+        <!-- Add more names -->
+      </select>
+
+      <label for="matric">Matric Number</label>
+      <select id="matric" required>
+        <option value="">-- Select Matric No. --</option>
+        <option value="002" >002</option>
+        <option value="001">001</option>
+        <!-- Match with name -->
+      </select>
+
+      <label for="password">Password</label>
+      <input type="password" id="password" required placeholder="Enter your password"/>
+
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <script src="js/login.js">
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const matric = document.getElementById("matric").value;
+  const password = document.getElementById("password").value;
+
+  // Fake check (you'll replace this with real backend call)
+  let name1 ="Tofunmi"
+  let matric1 ="001"
+  let pass1="1234"
+  
+  if (name && matric && password ==="1234") {
+    alert("Login successful!");
+    window.location.href = "/home.html"; 
+  } else {
+    alert("Invalid credentials. Try again.");
+  }
+});
+
+  </script>
+</body>
+</html>
