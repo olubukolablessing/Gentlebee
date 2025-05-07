@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Seat Selection | School Ticket System</title>
+  <style>
+    body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #f0f8ff; color: #0265a3; }
+    header { display: flex; justify-content: space-between; align-items: center; background-color: #0265a3; padding: 1rem 2rem; color: white; }
+    .logo { display: flex; align-items: center; }
+    .logo img { height: 40px; margin-right: 10px; }
+    .logo h1 { font-size: 1.2rem; margin: 0; }
+
+    .container { padding: 2rem; }
+    .button-group { display: flex; justify-content: space-around; margin-bottom: 2rem; }
+    .button { padding: 1rem 2rem; background-color: #0265a3; color: white; border: none; border-radius: 10px; cursor: pointer; transition: background-color 0.3s; font-size: 1.2rem; }
+    .button:hover { background-color: #035ea3; }
+    .seat-selection { margin-top: 2rem; }
+    .seats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 2rem; }
+    .seat { width: 40px; height: 40px; border-radius: 5px; background-color: #66A6FF; color: white; display: flex; justify-content: center; align-items: center; cursor: pointer; }
+    .seat.selected { background-color: #02a338; }
+    .seat.booked { background-color: #d3d3d3; cursor: not-allowed; }
+    .confirm-btn { padding: 1rem 2rem; background-color: #0265a3; color: white; border: none; border-radius: 10px; cursor: pointer; font-size: 1.2rem; display: block; margin: 0 auto; transition: background-color 0.3s; }
+    .confirm-btn:hover { background-color: #035ea3; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">
+      <img src="/rectem logo.jpg" alt="School Logo">
+      <h1>RECTEM</h1>
+    </div>
+    <div><a href="/index.html" style="color:white;text-decoration:none;font-weight:bold;">Logout</a></div>
+  </header>
+
+  <div class="container">
+    <h2>Choose a Service to Book a Seat</h2>
+    
+    <!-- Service selection buttons -->
+    <div class="button-group">
+      <button class="button" onclick="showSeats('Tuesday')">Tuesday Service</button>
+      <button class="button" onclick="showSeats('Thursday')">Thursday Service</button>
+      <button class="button" onclick="showSeats('Sunday')">Sunday Service</button>
+    </div>
+
+    <!-- Seat selection section -->
+    <div class="seat-selection" id="seat-selection" style="display:none;">
+      <h3>Select Your Seat</h3>
+      <p id="service-name"></p>
+
+      <div class="seats" id="seats-container">
+        <!-- Seats will be dynamically added here based on the selected service -->
+      </div>
+      
+      <button class="confirm-btn" id="confirm-btn" style="display:none;">Confirm Booking</button>
+    </div>
+  </div>
+
+  <script>
+    const seatData = {
+      Tuesday: ['T1', 'T2', '3', 'B1', 'B2', 'B3', 'C1', 'C2', 'C3'],
+      Thursday: ['E1', 'E2', 'E3', 'F1', 'F2', 'F3', 'G1', 'G2', 'G3'],
+      Sunday: ['C101', 'C102', 'C103', 'C104', 'C105', 'C106', 'C107', 'C108']
+    };
+
+    let selectedService = '';
+    let selectedSeat = '';
+
+    // Function to display seats based on the selected service
+    function showSeats(service) {
+      selectedService = service;
+      document.getElementById('service-name').innerText = `Choose a seat for ${service.charAt(0).toUpperCase() + service.slice(1)} Service`;
+
+      const seatsContainer = document.getElementById('seats-container');
+      seatsContainer.innerHTML = '';
+
+      // Create seat elements dynamically
+      seatData[service].forEach(seat => {
+        const seatElement = document.createElement('div');
+        seatElement.className = 'seat';
+        seatElement.textContent = seat;
+        seatElement.onclick = () => selectSeat(seat);
+        seatsContainer.appendChild(seatElement);
+      });
+
+      document.getElementById('seat-selection').style.display = 'block';
+      document.getElementById('confirm-btn').style.display = 'none';
+    }
+
+    // Function to handle seat selection
+    function selectSeat(seat) {
+      if (!selectedSeat) {
+        selectedSeat = seat;
+        const seats = document.querySelectorAll('.seat');
+        seats.forEach(seatElement => {
+          if (seatElement.textContent === selectedSeat) {
+            seatElement.classList.add('selected');
+          } else {
+            seatElement.classList.remove('selected');
+          }
+        });
+        document.getElementById('confirm-btn').style.display = 'block';
+      }
+    }
+
+    // Function to confirm the seat booking
+    document.getElementById('confirm-btn').addEventListener('click', () => {
+      alert(`You have successfully booked seat ${selectedSeat} for the ${selectedService.charAt(0).toUpperCase() + selectedService.slice(1)} service.`);
+      // You can add additional logic to save the booking here.
+      selectedSeat = '';
+      document.getElementById('seat-selection').style.display = 'none';
+    });
+  </script>
+
+</body>
+</html>
